@@ -74,15 +74,16 @@ public class CommunicatorLinkerTimerThread implements Runnable {
 				
 				e.printStackTrace();
 				
-				  unlock_after_exception.set(true);
-				
 			} catch (NullPointerException e) {
 				
 				CommunicatorLinkerIN.getCommunicatorLinkerIN_instance().back_from_communicator_link_db.set(true);
 				System.out.println("NullPointerException en CommunicatorLinkerTimerThread");
 				
-				 unlock_after_exception.set(true);
 				e.printStackTrace();
+			}
+			
+			finally {
+				 unlock_after_exception.set(true);
 			}
 
 		}
